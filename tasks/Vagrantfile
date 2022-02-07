@@ -1,0 +1,30 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/trusty64"
+
+  config.vm.define "jenkins" do |jenkins|
+    jenkins.vm.hostname = "jenkinsserver"
+    jenkins.vm.provider "virtualbox" do |vb|
+      vb.name = "jenkinsserver"
+    end
+    jenkins.vm.provision "shell", path: "jenkins-setup.sh"
+  end
+
+  config.vm.define "nexus" do |nexus|
+    nexus.vm.hostname = "nexusserver"
+    nexus.vm.provider "virtualbox" do |vb|
+      vb.name = "nexusserver"
+    end
+    nexus.vm.provision "shell", path: "nexus-setup.sh"
+  end
+
+  config.vm.define "sonar" do |sonar|
+    sonar.vm.hostname = "sonarserver"
+    sonar.vm.provider "virtualbox" do |vb|
+      vb.name = "sonar_erver"
+    end
+    sonar.vm.provision "shell", path: "sonar-setup.sh"
+  end
+end
