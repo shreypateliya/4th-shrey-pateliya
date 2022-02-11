@@ -8,6 +8,7 @@ Vagrant.configure("2") do |config|
   
   config.vm.define "Docker1" do |docker1|
       docker1.vm.hostname = "Docker01"
+      docker1.vm.network "private_network", ip: "192.168.1.10"
       docker1.vm.provider "virtualbox" do |vb|
         vb.name = "Docker01"
         vb.memory=1024
@@ -17,6 +18,7 @@ Vagrant.configure("2") do |config|
   
   config.vm.define "Docker2" do |docker2|
         docker2.vm.hostname = "Docker02"
+	docker2.vm.network "private_network", ip: "192.168.1.11"
         docker2.vm.provider "virtualbox" do |vb|
           vb.name = "Docker02"
           vb.memory=1024
@@ -26,6 +28,7 @@ Vagrant.configure("2") do |config|
   
   config.vm.define "Docker3" do |docker3|
         docker3.vm.hostname = "Docker03"
+	docker3.vm.network "private_network", ip: "192.168.1.12"
         docker3.vm.provider "virtualbox" do |vb|
           vb.name = "Docker03"
           vb.memory=1024
