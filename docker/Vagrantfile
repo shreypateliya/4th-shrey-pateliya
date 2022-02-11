@@ -1,0 +1,36 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+
+Vagrant.configure("2") do |config|
+  
+  config.vm.box = "ubuntu/bionic64"
+  
+  config.vm.define "Docker1" do |docker1|
+      docker1.vm.hostname = "Docker01"
+      docker1.vm.provider "virtualbox" do |vb|
+        vb.name = "Docker01"
+        vb.memory=1024
+      end
+      docker1.vm.provision "shell", path: "dockerinstall.sh"
+  end
+  
+  config.vm.define "Docker2" do |docker2|
+        docker2.vm.hostname = "Docker02"
+        docker2.vm.provider "virtualbox" do |vb|
+          vb.name = "Docker02"
+          vb.memory=1024
+        end
+        docker2.vm.provision "shell", path: "dockerinstall.sh"
+  end
+  
+  config.vm.define "Docker3" do |docker3|
+        docker3.vm.hostname = "Docker03"
+        docker3.vm.provider "virtualbox" do |vb|
+          vb.name = "Docker03"
+          vb.memory=1024
+        end
+        docker3.vm.provision "shell", path: "dockerinstall.sh"
+  end
+
+end
